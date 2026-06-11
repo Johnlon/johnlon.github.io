@@ -3,101 +3,319 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Johnlon - Projects & Content</title>
+    <title>Johnlon - Electronics & Projects</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            max-width: 900px;
-            margin: 0 auto;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             padding: 20px;
-            background-color: #f5f5f5;
         }
+
         .container {
-            background-color: white;
-            padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 900px;
+            width: 100%;
+            overflow: hidden;
         }
-        h1 {
-            color: #333;
-            margin-bottom: 10px;
-        }
-        .subtitle {
-            color: #666;
-            margin-bottom: 30px;
-            font-size: 16px;
-        }
-        .links-section {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
-        }
-        .link-card {
+
+        .header {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 20px;
-            border-radius: 8px;
-            text-decoration: none;
-            transition: transform 0.2s, box-shadow 0.2s;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            padding: 60px 40px;
+            text-align: center;
+            position: relative;
         }
-        .link-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 12px rgba(0,0,0,0.2);
+
+        .profile-section {
+            margin-bottom: 30px;
         }
-        .link-card h2 {
-            margin-top: 0;
+
+        .profile-icon {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            border: 4px solid white;
+            backdrop-filter: blur(10px);
+        }
+
+        .header h1 {
+            font-size: 48px;
             margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header .subtitle {
             font-size: 20px;
-        }
-        .link-card p {
-            margin: 0;
-            font-size: 14px;
             opacity: 0.95;
+            margin-bottom: 10px;
+            font-weight: 300;
         }
-        /* Individual card colors */
+
+        .header .tagline {
+            font-size: 16px;
+            opacity: 0.8;
+            font-style: italic;
+        }
+
+        .content {
+            padding: 50px 40px;
+        }
+
+        .intro-text {
+            text-align: center;
+            color: #555;
+            margin-bottom: 50px;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .links-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .link-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 30px 20px;
+            border-radius: 15px;
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .link-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: left 0.3s ease;
+            z-index: 0;
+        }
+
+        .link-card:hover::before {
+            left: 100%;
+        }
+
+        .link-card-content {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .link-card-icon {
+            font-size: 40px;
+        }
+
+        .link-card-text {
+            font-size: 18px;
+        }
+
+        .link-card-desc {
+            font-size: 12px;
+            opacity: 0.9;
+            font-weight: 400;
+            margin-top: 5px;
+        }
+
+        .link-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
         .youtube {
             background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);
         }
+
         .hackaday {
             background: linear-gradient(135deg, #00a8e1 0%, #0088cc 100%);
         }
+
         .github {
             background: linear-gradient(135deg, #333 0%, #000 100%);
         }
+
         .linkedin {
             background: linear-gradient(135deg, #0077b5 0%, #005885 100%);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background: #f8f9fa;
+            color: #888;
+            font-size: 14px;
+            border-top: 1px solid #eee;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: #f0f0f0;
+            color: #667eea;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-size: 20px;
+        }
+
+        .social-icon:hover {
+            background: #667eea;
+            color: white;
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 600px) {
+            .header {
+                padding: 40px 20px;
+            }
+
+            .header h1 {
+                font-size: 36px;
+            }
+
+            .content {
+                padding: 30px 20px;
+            }
+
+            .profile-icon {
+                width: 100px;
+                height: 100px;
+                font-size: 50px;
+            }
+
+            .link-card {
+                padding: 25px 15px;
+            }
+
+            .link-card-text {
+                font-size: 16px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Johnlon</h1>
-        <p class="subtitle">Electronics, Projects & CPU Videos</p>
-        
-        <p>Welcome to my hub! Here you can find links to all my projects and content across various platforms.</p>
-        
-        <div class="links-section">
-            <a href="https://www.youtube.com/@JohnLonerganProjects" class="link-card youtube" target="_blank">
-                <h2>🎥 YouTube</h2>
-                <p>Watch my CPU videos and electronics projects on my YouTube channel</p>
-            </a>
-            
-            <a href="https://hackaday.io/johnlon" class="link-card hackaday" target="_blank">
-                <h2>⚙️ Hackaday</h2>
-                <p>Check out my projects and write-ups on Hackaday.io</p>
-            </a>
-            
-            <a href="https://github.com/Johnlon" class="link-card github" target="_blank">
-                <h2>💻 GitHub</h2>
-                <p>Explore my code repositories and open source projects</p>
-            </a>
-            
-            <a href="https://www.linkedin.com/in/johnjlonergan" class="link-card linkedin" target="_blank">
-                <h2>🔗 LinkedIn</h2>
-                <p>Connect with me on LinkedIn for professional updates</p>
-            </a>
+        <div class="header">
+            <div class="profile-section">
+                <div class="profile-icon">
+                    <i class="fas fa-microchip"></i>
+                </div>
+                <h1>Johnlon</h1>
+                <p class="subtitle">Electronics Engineer & Content Creator</p>
+                <p class="tagline">Exploring CPU architecture, embedded systems & DIY projects</p>
+            </div>
+        </div>
+
+        <div class="content">
+            <p class="intro-text">
+                Welcome! I create in-depth content about CPU architecture, electronics, and engineering projects. 
+                Connect with me across these platforms to follow my latest work.
+            </p>
+
+            <div class="links-section">
+                <a href="https://www.youtube.com/@JohnLonerganProjects" class="link-card youtube" target="_blank">
+                    <div class="link-card-content">
+                        <div class="link-card-icon">
+                            <i class="fab fa-youtube"></i>
+                        </div>
+                        <div class="link-card-text">YouTube</div>
+                        <div class="link-card-desc">Video tutorials & deep dives</div>
+                    </div>
+                </a>
+
+                <a href="https://hackaday.io/johnlon" class="link-card hackaday" target="_blank">
+                    <div class="link-card-content">
+                        <div class="link-card-icon">
+                            <i class="fas fa-hammer"></i>
+                        </div>
+                        <div class="link-card-text">Hackaday</div>
+                        <div class="link-card-desc">Project documentation</div>
+                    </div>
+                </a>
+
+                <a href="https://github.com/Johnlon" class="link-card github" target="_blank">
+                    <div class="link-card-content">
+                        <div class="link-card-icon">
+                            <i class="fab fa-github"></i>
+                        </div>
+                        <div class="link-card-text">GitHub</div>
+                        <div class="link-card-desc">Code & repositories</div>
+                    </div>
+                </a>
+
+                <a href="https://www.linkedin.com/in/johnjlonergan" class="link-card linkedin" target="_blank">
+                    <div class="link-card-content">
+                        <div class="link-card-icon">
+                            <i class="fab fa-linkedin"></i>
+                        </div>
+                        <div class="link-card-text">LinkedIn</div>
+                        <div class="link-card-desc">Professional profile</div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="social-icons">
+                <a href="https://github.com/Johnlon" class="social-icon" target="_blank" title="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://www.youtube.com/@JohnLonerganProjects" class="social-icon" target="_blank" title="YouTube">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/johnjlonergan" class="social-icon" target="_blank" title="LinkedIn">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://hackaday.io/johnlon" class="social-icon" target="_blank" title="Hackaday">
+                    <i class="fas fa-hammer"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2024 Johnlon. All rights reserved.</p>
         </div>
     </div>
 </body>
