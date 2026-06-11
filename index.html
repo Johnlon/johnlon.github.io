@@ -66,6 +66,29 @@
     margin-bottom: 56px;
   }
 
+  .header-inner {
+    display: flex;
+    align-items: flex-start;
+    gap: 32px;
+  }
+
+  .header-text { flex: 1; }
+
+  .profile-img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 2px solid var(--green-dim);
+    object-fit: cover;
+    flex-shrink: 0;
+    margin-top: 8px;
+  }
+
+  @media (max-width: 560px) {
+    .header-inner { flex-direction: column-reverse; align-items: flex-start; }
+    .profile-img { width: 80px; height: 80px; }
+  }
+
   .prompt {
     font-family: var(--mono);
     font-size: 13px;
@@ -306,6 +329,8 @@
   <!-- ── HEADER ── -->
   <header>
     <div class="prompt"><span>~/johnlon $</span> whoami</div>
+    <div class="header-inner">
+    <div class="header-text">
     <h1>John Lonergan<span class="cursor"></span></h1>
     <p class="tagline">// software engineer · hardware hacker · dad · husband · grandad · London, UK</p>
     <div class="bio">
@@ -322,9 +347,12 @@
         a 40-year itch.
       </p>
       <p>
-        Outside of all that: husband, dad of four, proud grandad. Still a busy parent.
+        Still working in London and looking for interesting, gainful opportunities. Outside of all that: husband, dad of four, proud grandad. Still a busy parent.
       </p>
     </div>
+    </div><!-- /.header-text -->
+    <img class="profile-img" src="https://avatars.githubusercontent.com/u/836248?v=4" alt="John Lonergan">
+    </div><!-- /.header-inner -->
   </header>
 
   <!-- ── CAREER TIMELINE ── -->
