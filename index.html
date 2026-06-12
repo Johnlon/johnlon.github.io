@@ -205,11 +205,28 @@
     width: 100%;
     height: 100%;
     min-height: 120px;
-    object-fit: cover;
     border-radius: 2px;
     margin-bottom: 0;
     display: block;
     align-self: stretch;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .carousel-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+  }
+  .carousel-img.active { opacity: 1; }
+
+  .project-card.featured .carousel-img {
+    object-fit: contain;
+    background: var(--surface);
   }
 
   .card-body {
@@ -269,17 +286,28 @@
     grid-column: 1 / -1;
     gap: 20px;
     border-color: var(--green-dim);
+    cursor: pointer;
   }
   .project-card.featured:hover { border-color: var(--green); }
 
+  .featured-yt-link {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--amber);
+    border: 1px solid var(--amber);
+    border-radius: 3px;
+    padding: 5px 10px;
+    display: inline-block;
+    transition: background 0.2s, color 0.2s;
+  }
+  .featured-yt-link:hover {
+    background: var(--amber);
+    color: var(--bg);
+    text-decoration: none;
+  }
+
   .project-card.featured .card-thumb {
-    width: 100%;
-    height: 100%;
     min-height: 160px;
-    margin-bottom: 0;
-    align-self: stretch;
-    object-fit: contain;
-    background: var(--surface);
   }
 
   .featured-content {
@@ -498,8 +526,16 @@
     <div class="section-label">Projects</div>
     <div class="projects">
 
-      <a href="https://hackaday.io/project/166922-spam-1-8-bit-cpu" target="_blank" class="project-card featured">
-        <img class="card-thumb" src="https://img.youtube.com/vi/z-cmh6FX50g/hqdefault.jpg" alt="SPAM-1 CPU">
+      <div class="project-card featured" onclick="window.open('https://hackaday.io/project/166922-spam-1-8-bit-cpu','_blank')" role="link" tabindex="0">
+        <div class="card-thumb">
+          <img class="carousel-img" src="https://cdn.hackaday.io/images/2613371602523519906.png" alt="SPAM-1 CPU">
+          <img class="carousel-img" src="https://cdn.hackaday.io/images/9377581602524142431.png" alt="SPAM-1 CPU">
+          <img class="carousel-img" src="https://cdn.hackaday.io/images/4501641602524392281.jpg" alt="SPAM-1 CPU">
+          <img class="carousel-img" src="https://cdn.hackaday.io/images/9586721652115840369.jpg" alt="SPAM-1 CPU">
+          <img class="carousel-img" src="https://cdn.hackaday.io/images/3666931615661060306.jpg" alt="SPAM-1 CPU">
+          <img class="carousel-img" src="https://cdn.hackaday.io/images/1642131612127141019.jpg" alt="SPAM-1 CPU">
+          <img class="carousel-img" src="https://img.youtube.com/vi/z-cmh6FX50g/hqdefault.jpg" alt="SPAM-1 CPU">
+        </div>
         <div class="featured-content">
           <div class="featured-body">
             <div class="card-tag">★ Flagship project</div>
@@ -514,11 +550,21 @@
             <strong>12k</strong>
             views on Hackaday
           </div>
+          <a href="https://www.youtube.com/watch?v=z-cmh6FX50g" target="_blank" class="featured-yt-link" onclick="event.stopPropagation()">
+            ▶ What, why, how?
+          </a>
         </div>
-      </a>
+      </div>
 
       <a href="https://hackaday.io/project/169707-integrated-circuit-tester-exploratory-tool" target="_blank" class="project-card">
-        <img class="card-thumb" src="https://cdn.hackaday.io/images/resize/600x600/5994081580577899675.jpg" alt="IC Tester">
+        <div class="card-thumb">
+          <img class="carousel-img" src="https://cdn.hackaday.io/images/5994081580577899675.jpg" alt="IC Tester">
+          <img class="carousel-img" src="https://cdn.hackaday.io/images/598841582685556661.png" alt="IC Tester">
+          <img class="carousel-img" src="https://cdn.hackaday.io/images/5428461582685793737.png" alt="IC Tester">
+          <img class="carousel-img" src="https://cdn.hackaday.io/images/8310441582078573866.png" alt="IC Tester">
+          <img class="carousel-img" src="https://cdn.hackaday.io/images/5341651581193426679.png" alt="IC Tester">
+          <img class="carousel-img" src="https://cdn.hackaday.io/images/8313311580726538165.png" alt="IC Tester">
+        </div>
         <div class="card-body">
           <div class="card-tag">Hardware · C</div>
           <h3>Integrated Circuit Tester</h3>
@@ -527,7 +573,14 @@
       </a>
 
       <a href="https://hackaday.io/project/178227-dual-7-segment-hex-display-module" target="_blank" class="project-card">
-        <img class="card-thumb" src="https://cdn.hackaday.io/images/resize/600x600/9728231621282419679.jpg" alt="Dual 7-Segment Display">
+        <div class="card-thumb">
+          <img class="carousel-img" src="https://cdn.hackaday.io/images/9728231621282419679.jpg" alt="Dual 7-Segment Display">
+          <img class="carousel-img" src="https://cdn.hackaday.io/images/9787591621282233985.jpg" alt="Dual 7-Segment Display">
+          <img class="carousel-img" src="https://cdn.hackaday.io/images/284411615862252307.png" alt="Dual 7-Segment Display">
+          <img class="carousel-img" src="https://cdn.hackaday.io/images/3841801615769114464.png" alt="Dual 7-Segment Display">
+          <img class="carousel-img" src="https://cdn.hackaday.io/images/8754901615862195049.png" alt="Dual 7-Segment Display">
+          <img class="carousel-img" src="https://cdn.hackaday.io/images/4486091619990258752.jpg" alt="Dual 7-Segment Display">
+        </div>
         <div class="card-body">
           <div class="card-tag">Hardware · PIC</div>
           <h3>Dual 7-Segment Hex Display</h3>
@@ -536,7 +589,10 @@
       </a>
 
       <a href="https://hackaday.io/project/181036-nes-controller-interface-using-pic16f18446" target="_blank" class="project-card">
-        <img class="card-thumb" src="https://cdn.hackaday.io/images/resize/600x600/5213491630299467071.png" alt="NES Controller Interface">
+        <div class="card-thumb">
+          <img class="carousel-img" src="https://cdn.hackaday.io/images/5213491630299467071.png" alt="NES Controller Interface">
+          <img class="carousel-img" src="https://cdn.hackaday.io/images/423291630299490629.png" alt="NES Controller Interface">
+        </div>
         <div class="card-body">
           <div class="card-tag">Hardware · PIC</div>
           <h3>NES Controller Interface</h3>
@@ -545,7 +601,9 @@
       </a>
 
       <a href="https://hackaday.io/project/186151-vbcc-compiler-spam-1-backend" target="_blank" class="project-card">
-        <img class="card-thumb" src="https://cdn.hackaday.io/images/resize/600x600/8373041664902625486.png" alt="VBCC Compiler Backend">
+        <div class="card-thumb">
+          <img class="carousel-img" src="https://cdn.hackaday.io/images/8373041664902625486.png" alt="VBCC Compiler Backend">
+        </div>
         <div class="card-body">
           <div class="card-tag">Compilers · C</div>
           <h3>VBCC Compiler — SPAM-1 Backend</h3>
@@ -554,7 +612,14 @@
       </a>
 
       <a href="https://hackaday.io/project/177309-7-segment-display-module-using-dm9368n" target="_blank" class="project-card">
-        <img class="card-thumb" src="https://cdn.hackaday.io/images/8555211617309414646.jpg" alt="7-Segment Display Module DM9368N">
+        <div class="card-thumb">
+          <img class="carousel-img" src="https://cdn.hackaday.io/images/8555211617309414646.jpg" alt="7-Segment DM9368N">
+          <img class="carousel-img" src="https://cdn.hackaday.io/images/6929631617309350721.jpg" alt="7-Segment DM9368N">
+          <img class="carousel-img" src="https://cdn.hackaday.io/images/4241821619989709607.jpg" alt="7-Segment DM9368N">
+          <img class="carousel-img" src="https://cdn.hackaday.io/images/3746291615671667486.jpg" alt="7-Segment DM9368N">
+          <img class="carousel-img" src="https://cdn.hackaday.io/images/7110091615671721286.jpg" alt="7-Segment DM9368N">
+          <img class="carousel-img" src="https://cdn.hackaday.io/images/781701615671821835.jpg" alt="7-Segment DM9368N">
+        </div>
         <div class="card-body">
           <div class="card-tag">Hardware · Retro ICs</div>
           <h3>7-Segment Display Module (DM9368N)</h3>
@@ -563,7 +628,9 @@
       </a>
 
       <a href="https://hackaday.io/project/205913-drinking-horn-renovation" target="_blank" class="project-card">
-        <img class="card-thumb" src="https://cdn.hackaday.io/images/resize/600x600/3304831781229544525.jpg" alt="Drinking Horn Renovation">
+        <div class="card-thumb">
+          <img class="carousel-img" src="https://cdn.hackaday.io/images/3304831781229544525.jpg" alt="Drinking Horn Renovation">
+        </div>
         <div class="card-body">
           <div class="card-tag">Making · Craft</div>
           <h3>Drinking Horn Renovation</h3>
@@ -572,7 +639,12 @@
       </a>
 
       <a href="https://hackaday.io/project/205908-subwoofer-tangband-w5-1138" target="_blank" class="project-card">
-        <img class="card-thumb" src="https://cdn.hackaday.io/images/resize/600x600/8109971781198133343.jpg" alt="Subwoofer Tang Band W5-1138">
+        <div class="card-thumb">
+          <img class="carousel-img" src="https://cdn.hackaday.io/images/8109971781198133343.jpg" alt="Subwoofer">
+          <img class="carousel-img" src="https://cdn.hackaday.io/images/1336671781198059590.jpg" alt="Subwoofer">
+          <img class="carousel-img" src="https://cdn.hackaday.io/images/7546521781198174601.jpg" alt="Subwoofer">
+          <img class="carousel-img" src="https://cdn.hackaday.io/images/1119371781198465320.png" alt="Subwoofer">
+        </div>
         <div class="card-body">
           <div class="card-tag">Audio · Making</div>
           <h3>Subwoofer — Tang Band W5-1138</h3>
@@ -615,5 +687,19 @@
   </footer>
 
 </div>
+<script>
+  document.querySelectorAll('.card-thumb').forEach(function (thumb) {
+    var imgs = thumb.querySelectorAll('.carousel-img');
+    if (!imgs.length) return;
+    var i = 0;
+    imgs[0].classList.add('active');
+    if (imgs.length < 2) return;
+    setInterval(function () {
+      imgs[i].classList.remove('active');
+      i = (i + 1) % imgs.length;
+      imgs[i].classList.add('active');
+    }, 3500);
+  });
+</script>
 </body>
 </html>
