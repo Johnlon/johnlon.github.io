@@ -198,6 +198,24 @@
     line-height: 1.6;
   }
 
+  /* ── card thumbnails ── */
+  .card-thumb {
+    width: 100%;
+    height: 100%;
+    min-height: 120px;
+    object-fit: cover;
+    border-radius: 2px;
+    margin-bottom: 0;
+    display: block;
+    align-self: stretch;
+  }
+
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
   /* ── projects ── */
   .projects {
     display: grid;
@@ -212,7 +230,10 @@
     background: var(--surface);
     transition: border-color 0.2s, transform 0.2s;
     text-decoration: none;
-    display: block;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: stretch;
+    gap: 16px;
     color: inherit;
   }
   .project-card:hover {
@@ -227,14 +248,12 @@
     color: var(--green);
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    margin-bottom: 8px;
   }
 
   .project-card h3 {
     font-size: 15px;
     font-weight: 600;
     color: #e8ede8;
-    margin-bottom: 8px;
   }
 
   .project-card p {
@@ -246,13 +265,27 @@
   /* ── featured (SPAM-1) ── */
   .project-card.featured {
     grid-column: 1 / -1;
-    display: grid;
-    grid-template-columns: 1fr auto;
-    align-items: start;
-    gap: 12px;
+    gap: 20px;
     border-color: var(--green-dim);
   }
   .project-card.featured:hover { border-color: var(--green); }
+
+  .project-card.featured .card-thumb {
+    width: 100%;
+    height: 100%;
+    min-height: 160px;
+    margin-bottom: 0;
+    align-self: stretch;
+    object-fit: contain;
+    background: var(--surface);
+  }
+
+  .featured-content {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 4px 0;
+  }
 
   .featured-body .card-tag { color: var(--amber); }
   .featured-body h3 { font-size: 17px; }
@@ -261,7 +294,7 @@
     font-family: var(--mono);
     font-size: 11px;
     color: var(--muted);
-    text-align: right;
+    text-align: left;
     white-space: nowrap;
     padding-top: 2px;
   }
@@ -326,8 +359,9 @@
 
   @media (max-width: 560px) {
     .tl-item { grid-template-columns: 72px 1fr; }
-    .project-card.featured { grid-template-columns: 1fr; }
-    .featured-stat { text-align: left; }
+    .project-card { grid-template-columns: 1fr; }
+    .card-thumb { height: 160px; min-height: unset; }
+    .project-card.featured .card-thumb { height: 160px; }
     footer { flex-direction: column; }
   }
 </style>
@@ -443,61 +477,85 @@
     <div class="projects">
 
       <a href="https://hackaday.io/project/166922-spam-1-8-bit-cpu" target="_blank" class="project-card featured">
-        <div class="featured-body">
-          <div class="card-tag">★ Flagship project</div>
-          <h3>SPAM-1 — 8-Bit CPU from 7400 TTL Logic</h3>
-          <p>
-            A complete 8-bit CPU built entirely from discrete TTL 7400-series chips — no FPGAs, no cheating.
-            Full Verilog simulation, custom assembler, C compiler backend (VBCC port), CHIP-8 emulator,
-            NES controller interface, and a growing toolchain. Documented exhaustively on Hackaday and GitHub.
-          </p>
-        </div>
-        <div class="featured-stat">
-          <strong>12k</strong>
-          views on Hackaday
+        <img class="card-thumb" src="https://img.youtube.com/vi/z-cmh6FX50g/hqdefault.jpg" alt="SPAM-1 CPU">
+        <div class="featured-content">
+          <div class="featured-body">
+            <div class="card-tag">★ Flagship project</div>
+            <h3>SPAM-1 — 8-Bit CPU from 7400 TTL Logic</h3>
+            <p>
+              A complete 8-bit CPU built entirely from discrete TTL 7400-series chips — no FPGAs, no cheating.
+              Full Verilog simulation, custom assembler, C compiler backend (VBCC port), CHIP-8 emulator,
+              NES controller interface, and a growing toolchain. Documented exhaustively on Hackaday and GitHub.
+            </p>
+          </div>
+          <div class="featured-stat">
+            <strong>12k</strong>
+            views on Hackaday
+          </div>
         </div>
       </a>
 
       <a href="https://hackaday.io/project/169707-integrated-circuit-tester-exploratory-tool" target="_blank" class="project-card">
-        <div class="card-tag">Hardware · C</div>
-        <h3>Integrated Circuit Tester</h3>
-        <p>Interactive tester and exploratory tool for logic chips, including tri-state support. Useful in the lab when debugging old ICs.</p>
+        <img class="card-thumb" src="https://cdn.hackaday.io/images/resize/600x600/5994081580577899675.jpg" alt="IC Tester">
+        <div class="card-body">
+          <div class="card-tag">Hardware · C</div>
+          <h3>Integrated Circuit Tester</h3>
+          <p>Interactive tester and exploratory tool for logic chips, including tri-state support. Useful in the lab when debugging old ICs.</p>
+        </div>
       </a>
 
       <a href="https://hackaday.io/project/178227-dual-7-segment-hex-display-module" target="_blank" class="project-card">
-        <div class="card-tag">Hardware · PIC</div>
-        <h3>Dual 7-Segment Hex Display</h3>
-        <p>Two-digit hex display module using a PIC16F18446 microcontroller. Built to act as a debug display for the SPAM-1.</p>
+        <img class="card-thumb" src="https://cdn.hackaday.io/images/resize/600x600/9728231621282419679.jpg" alt="Dual 7-Segment Display">
+        <div class="card-body">
+          <div class="card-tag">Hardware · PIC</div>
+          <h3>Dual 7-Segment Hex Display</h3>
+          <p>Two-digit hex display module using a PIC16F18446 microcontroller. Built to act as a debug display for the SPAM-1.</p>
+        </div>
       </a>
 
       <a href="https://hackaday.io/project/181036-nes-controller-interface-using-pic16f18446" target="_blank" class="project-card">
-        <div class="card-tag">Hardware · PIC</div>
-        <h3>NES Controller Interface</h3>
-        <p>NES gamepad interface for SPAM-1, enabling CHIP-8 game input via original Nintendo hardware. Because of course it does.</p>
+        <img class="card-thumb" src="https://cdn.hackaday.io/images/resize/600x600/5213491630299467071.png" alt="NES Controller Interface">
+        <div class="card-body">
+          <div class="card-tag">Hardware · PIC</div>
+          <h3>NES Controller Interface</h3>
+          <p>NES gamepad interface for SPAM-1, enabling CHIP-8 game input via original Nintendo hardware. Because of course it does.</p>
+        </div>
       </a>
 
       <a href="https://hackaday.io/project/186151-vbcc-compiler-spam-1-backend" target="_blank" class="project-card">
-        <div class="card-tag">Compilers · C</div>
-        <h3>VBCC Compiler — SPAM-1 Backend</h3>
-        <p>Porting the VBCC C compiler to target the SPAM-1 instruction set. Writing a compiler backend from scratch to run C on homebrew silicon.</p>
+        <img class="card-thumb" src="https://cdn.hackaday.io/images/resize/600x600/8373041664902625486.png" alt="VBCC Compiler Backend">
+        <div class="card-body">
+          <div class="card-tag">Compilers · C</div>
+          <h3>VBCC Compiler — SPAM-1 Backend</h3>
+          <p>Porting the VBCC C compiler to target the SPAM-1 instruction set. Writing a compiler backend from scratch to run C on homebrew silicon.</p>
+        </div>
       </a>
 
-      <a href="https://github.com/Johnlon/integrated-circuit-tester" target="_blank" class="project-card">
-        <div class="card-tag">Open Source · GitHub</div>
-        <h3>7-Segment Display Module (DM9368N)</h3>
-        <p>Compact two-digit breadboard-compatible display module using the vintage DM9368N decoder driver ICs.</p>
+      <a href="https://hackaday.io/project/177309-7-segment-display-module-using-dm9368n" target="_blank" class="project-card">
+        <img class="card-thumb" src="https://cdn.hackaday.io/images/8555211617309414646.jpg" alt="7-Segment Display Module DM9368N">
+        <div class="card-body">
+          <div class="card-tag">Hardware · Retro ICs</div>
+          <h3>7-Segment Display Module (DM9368N)</h3>
+          <p>Compact two-digit breadboard-compatible display module using the vintage DM9368N decoder driver ICs.</p>
+        </div>
       </a>
 
       <a href="https://hackaday.io/project/205913-drinking-horn-renovation" target="_blank" class="project-card">
-        <div class="card-tag">Making · Craft</div>
-        <h3>Drinking Horn Renovation</h3>
-        <p>Restoring and renovating a drinking horn — cleaning, re-sealing, and finishing a traditional vessel back to usable condition.</p>
+        <img class="card-thumb" src="https://cdn.hackaday.io/images/resize/600x600/3304831781229544525.jpg" alt="Drinking Horn Renovation">
+        <div class="card-body">
+          <div class="card-tag">Making · Craft</div>
+          <h3>Drinking Horn Renovation</h3>
+          <p>Restoring and renovating a drinking horn — cleaning, re-sealing, and finishing a traditional vessel back to usable condition.</p>
+        </div>
       </a>
 
       <a href="https://hackaday.io/project/205908-subwoofer-tangband-w5-1138" target="_blank" class="project-card">
-        <div class="card-tag">Audio · Making</div>
-        <h3>Subwoofer — Tang Band W5-1138</h3>
-        <p>Building a subwoofer enclosure around the Tang Band W5-1138 driver. Speaker cabinet design, construction, and tuning.</p>
+        <img class="card-thumb" src="https://cdn.hackaday.io/images/resize/600x600/8109971781198133343.jpg" alt="Subwoofer Tang Band W5-1138">
+        <div class="card-body">
+          <div class="card-tag">Audio · Making</div>
+          <h3>Subwoofer — Tang Band W5-1138</h3>
+          <p>Building a subwoofer enclosure around the Tang Band W5-1138 driver. Speaker cabinet design, construction, and tuning.</p>
+        </div>
       </a>
 
     </div>
