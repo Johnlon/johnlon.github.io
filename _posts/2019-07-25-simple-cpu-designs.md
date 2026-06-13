@@ -8,6 +8,8 @@ blogger_url: https://johnlonergan.blogspot.com/2019/07/simple-cpu-designs.html
 
 A collection of resources I've been using whilst designing the SPAM-1 CPU.
 
+![CPU datapath block diagram](https://ai2-s2-public.s3.amazonaws.com/figures/2017-08-08/9bf7eb9200a43b077c6fccea9f05bfb3b58f3406/3-Figure2-1.png)
+
 - **[Ben Eater](https://www.youtube.com/c/BenEater)** — Ben's YouTube channel on building an 8-bit computer from scratch on breadboards is exactly what got me started. Clear, methodical, excellent.
 - **[SimpleCPUDesign.com](http://www.simplecpudesign.com/)** — A useful reference site for simple CPU architectures.
 - **[CrazySmallCPU](https://minnie.tuhs.org/Programs/UcodeCPU/index.html)** — Warren Toomey's tiny CPU — fascinating to read how minimal a working CPU can be.
