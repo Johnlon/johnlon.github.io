@@ -204,6 +204,22 @@ layout: null
     padding: 1px 6px;
   }
 
+  .pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 0;
+    margin-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+    font-family: var(--mono);
+    font-size: 12px;
+  }
+
+  .pagination a { color: var(--green); }
+  .pagination a:hover { text-decoration: none; opacity: 0.8; }
+  .pagination .page-info { color: var(--muted); }
+  .pagination .disabled { color: var(--border); pointer-events: none; }
+
   footer {
     border-top: 1px solid var(--border);
     margin-top: 48px;
@@ -248,9 +264,14 @@ layout: null
 
   <div class="section-label">All posts</div>
 
+  <div class="pagination">
+    <span>{% if paginator.next_page %}<a href="{{ paginator.next_page_path }}">← earlier</a>{% else %}<span class="disabled">← earlier</span>{% endif %}</span>
+    <span class="page-info">page {{ paginator.page }} of {{ paginator.total_pages }}</span>
+    <span>{% if paginator.previous_page %}<a href="{{ paginator.previous_page_path }}">newer →</a>{% else %}<span class="disabled">newer →</span>{% endif %}</span>
+  </div>
+
   <ul class="post-list">
-    {% assign posts = site.posts %}
-    {% for post in posts %}
+    {% for post in paginator.posts %}
     <li class="post-item">
       <span class="post-item-date">{{ post.date | date: "%b %Y" }}</span>
       <div class="post-item-content">
