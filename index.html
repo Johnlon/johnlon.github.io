@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>John Lonergan</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -16,8 +16,8 @@
     --green:     #39ff7a;
     --green-dim: #1a7a3a;
     --amber:     #ffb830;
-    --text:      #c8d4c9;
-    --muted:     #5a6b5c;
+    --text:      #dde8de;
+    --muted:     #8a9e8c;
     --mono:      'Share Tech Mono', monospace;
     --sans:      'Inter', sans-serif;
   }
@@ -29,7 +29,8 @@
     color: var(--text);
     font-family: var(--sans);
     font-size: 15px;
-    line-height: 1.7;
+    font-weight: 500;
+    line-height: 1.5;
     min-height: 100vh;
   }
 
@@ -132,10 +133,10 @@
     font-size: 15px;
     color: var(--text);
     max-width: 620px;
-    line-height: 1.8;
+    line-height: 1.6;
   }
 
-  .bio p + p { margin-top: 14px; }
+  .bio p + p { margin-top: 10px; }
 
   .bio + .links { margin-top: 24px; }
 
@@ -197,7 +198,7 @@
   .tl-content p {
     font-size: 13px;
     color: var(--muted);
-    line-height: 1.6;
+    line-height: 1.5;
   }
 
   /* ── card thumbnails ── */
@@ -278,7 +279,7 @@
   .project-card p {
     font-size: 13px;
     color: var(--muted);
-    line-height: 1.6;
+    line-height: 1.5;
   }
 
   /* ── featured (SPAM-1) ── */
@@ -456,10 +457,17 @@
     <div class="section-label">Career &amp; Life</div>
     <div class="timeline">
       <div class="tl-item">
+        <div class="tl-year">1970s</div>
+        <div class="tl-content">
+          <h3>Hacking from age 10</h3>
+          <p>Taking things apart to see how they worked — radios, toys, anything with a circuit inside. The curiosity came first; the theory caught up later.</p>
+        </div>
+      </div>
+      <div class="tl-item">
         <div class="tl-year">Early 80s</div>
         <div class="tl-content">
-          <h3>First code, age 13</h3>
-          <p>Programming on a terminal line my school had to Ford Motor Company's mainframe, and on an Apple II Europlus — while also building my first electronics gadgets. The hook was immediate on both fronts.</p>
+          <h3>First code, age 15</h3>
+          <p>Programming on a terminal linked to Ford Motor Company's mainframe at school, and on an Apple II Europlus — while also building first electronics projects. The hook was immediate on both fronts.</p>
         </div>
       </div>
       <div class="tl-item">
@@ -467,6 +475,20 @@
         <div class="tl-content">
           <h3>Self-taught electronics &amp; assembly</h3>
           <p>Pulled apart anything with chips in it. Taught myself electronics and assembly language. The hardware bug never left.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">1980s</div>
+        <div class="tl-content">
+          <h3>Solo travel · SE Asia, Australia, NZ, China, Japan</h3>
+          <p>Stints travelling alone across Southeast Asia, Australia, New Zealand, Yangshuo China, and Japan. Including a week in Yangshuo, China — informal English teaching in a rural school, and lovely bike rides through the countryside. Formative in every sense.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">1983–86</div>
+        <div class="tl-content">
+          <h3>B.Eng Engineering Science · University of Liverpool</h3>
+          <p>Formal grounding in engineering whilst the side projects kept multiplying.</p>
         </div>
       </div>
       <div class="tl-item">
@@ -483,8 +505,8 @@
           <p>Moved into software development in Cambridge. Finding my feet blending my interest
             in hardware with my growing expertise in software and turning it towards embedded systems
             and real time machine control systems.</p>
-            <p>This opportunity allowed me to build a fairly deep fundamental appreciation for the intersection of hardware and software.
-              How the CPU works, the impact of latency, the challenges of concurrency and 'mechanical sympathy' in general.
+            <p>This built a deep, intuitive appreciation for the intersection of hardware and software that never left.
+              How the CPU works, the impact of latency, the challenges of concurrency — mechanical sympathy and principles like KISS came to the fore here and shaped everything that followed.
             </p>
         </div>
       </div>
@@ -496,17 +518,52 @@
         </div>
       </div>
       <div class="tl-item">
-        <div class="tl-year">Late 90s–</div>
+        <div class="tl-year">1994–2011</div>
         <div class="tl-content">
-          <h3>Software engineer, financial industry · London</h3>
-          <p>Long career building high throughput streaming distributed systems, and backend systems in general and SDLC tooling for financial institutions. JVM, Go, Python, architecture, testing discipline, the works.</p>
+          <h3>Director, Advisory Technology · UBS Investment Bank · London</h3>
+          <p>Technical lead for the bank's strategic CRM and equity research systems. Introduced agile and automated testing practices, built a web application firewall infrastructure, and migrated from a vendor CRM to a bespoke solution across telephony integration, network programming, load balancer management, and analytics.</p>
         </div>
       </div>
       <div class="tl-item">
-        <div class="tl-year">2000s</div>
+        <div class="tl-year">2011–18</div>
         <div class="tl-content">
-          <h3>Husband &amp; dad</h3>
-          <p>Married. Father of twins. Priorities in order.</p>
+          <h3>Director, Global Markets Securities Technology · Bank of America Merrill Lynch</h3>
+          <p>Lead engineer on the BAML securities straight through processing system in the middle office. Transformed the development culture towards automated testing, continuous integration, and frequent delivery. Introduced Scala as the team's strategic language, built a real-time inventory system using event sourcing and CQRS, architected a reverse proxy platform for secure web app deployment, and led a data platform for analytics and machine learning.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2018–</div>
+        <div class="tl-content">
+          <h3>Technical Architect · JP Morgan</h3>
+          <p>Distributed systems architecture and platform engineering in global markets technology.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">Late 80s–90s</div>
+        <div class="tl-content">
+          <h3>BSAC 510 CliDive</h3>
+          <p>Years as a member of CliDive (BSAC 510) — and where I met Caroline.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">1999</div>
+        <div class="tl-content">
+          <h3>Married Caroline</h3>
+          <p>Katie arrived in 2002, then Johnny and Gracie in 2004. Priorities firmly in order.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2014</div>
+        <div class="tl-content">
+          <h3>4 weeks in Borneo · with the family</h3>
+          <p>The whole family visiting remarkable natural sites and staying with local families. A humbling and unforgettable experience.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2017</div>
+        <div class="tl-content">
+          <h3>5-week US road trip · National Parks</h3>
+          <p>The whole family, camping all the way — San Francisco, Yosemite, Death Valley, Grand Canyon, Monument Valley, Bryce Canyon, Yellowstone. One of those trips that becomes part of the family mythology.</p>
         </div>
       </div>
       <div class="tl-item">
