@@ -253,6 +253,55 @@
     gap: 8px;
   }
 
+  /* ── blog ── */
+  .blog-posts {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+  }
+  .blog-loading {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .blog-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 18px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    text-decoration: none;
+    transition: border-color 0.2s;
+  }
+  .blog-card:hover {
+    border-color: var(--green-dim);
+    text-decoration: none;
+  }
+  .blog-card-date {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+  }
+  .blog-card-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.4;
+  }
+  .blog-card-excerpt {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.5;
+    flex: 1;
+  }
+  .blog-card-more {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--green-dim);
+  }
+
   /* ── projects ── */
   .projects {
     display: grid;
@@ -655,6 +704,14 @@
     </div>
   </section>
 
+  <!-- ── BLOG ── -->
+  <section>
+    <div class="section-label">From the Blog</div>
+    <div class="blog-posts" id="blog-posts">
+      <div class="blog-loading">loading posts…</div>
+    </div>
+  </section>
+
   <!-- ── PROJECTS ── -->
   <section>
     <div class="section-label">Projects</div>
@@ -835,6 +892,59 @@
       imgs[i].classList.add('active');
     }, 3500);
   });
+</script>
+<script>
+  function renderBlogPosts(data) {
+    var container = document.getElementById('blog-posts');
+    var entries = (data.feed && data.feed.entry) || [];
+    if (!entries.length) { container.innerHTML = '<p class="blog-loading">No posts found.</p>'; return; }
+
+    function stripHtml(html) {
+      var tmp = document.createElement('div');
+      tmp.innerHTML = html;
+      return tmp.textContent || tmp.innerText || '';
+    }
+    function formatDate(iso) {
+      var d = new Date(iso);
+      return d.toLocaleDateString('en-GB', { year: 'numeric', month: 'short', day: 'numeric' });
+    }
+    function getLink(entry) {
+      var links = entry.link || [];
+      for (var i = 0; i < links.length; i++) {
+        if (links[i].rel === 'alternate') return links[i].href;
+      }
+      return '#';
+    }
+
+    container.innerHTML = '';
+    entries.forEach(function (entry) {
+      var title = (entry.title && entry.title.$t) || 'Untitled';
+      var date = (entry.published && entry.published.$t) ? formatDate(entry.published.$t) : '';
+      var raw = (entry.content && entry.content.$t) || (entry.summary && entry.summary.$t) || '';
+      var excerpt = stripHtml(raw).trim().slice(0, 160).replace(/\s+\S*$/, '') + '…';
+      var href = getLink(entry);
+      var card = document.createElement('a');
+      card.className = 'blog-card';
+      card.href = href;
+      card.target = '_blank';
+      card.rel = 'noopener';
+      card.innerHTML =
+        '<span class="blog-card-date">' + date + '</span>' +
+        '<span class="blog-card-title">' + title + '</span>' +
+        '<span class="blog-card-excerpt">' + excerpt + '</span>' +
+        '<span class="blog-card-more">read more →</span>';
+      container.appendChild(card);
+    });
+  }
+
+  (function () {
+    var s = document.createElement('script');
+    s.src = 'https://johnlonergan.blogspot.com/feeds/posts/default?alt=json-in-script&max-results=6&callback=renderBlogPosts';
+    s.onerror = function () {
+      document.getElementById('blog-posts').innerHTML = '<p class="blog-loading">Could not load posts.</p>';
+    };
+    document.head.appendChild(s);
+  })();
 </script>
 </body>
 </html>
