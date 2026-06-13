@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>John Lonergan — CV</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:        #0d0f0e;
+    --surface:   #131614;
+    --border:    #1e2420;
+    --green:     #39ff7a;
+    --green-dim: #1a7a3a;
+    --amber:     #ffb830;
+    --text:      #dde8de;
+    --muted:     #8a9e8c;
+    --mono:      'Share Tech Mono', monospace;
+    --sans:      'Inter', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0,0,0,0.07) 2px,
+      rgba(0,0,0,0.07) 4px
+    );
+    pointer-events: none;
+    z-index: 999;
+  }
+
+  a { color: var(--green); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  .wrap {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ── NAV ── */
+  nav {
+    border-bottom: 1px solid var(--border);
+    padding: 14px 0;
+    margin-bottom: 48px;
+  }
+
+  nav .wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-home {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--green);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .nav-home::before { content: '←'; }
+
+  .nav-links {
+    display: flex;
+    gap: 20px;
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  .nav-links a { color: var(--muted); }
+  .nav-links a:hover { color: var(--text); }
+
+  /* ── CV HEADER ── */
+  .cv-header {
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 32px;
+    margin-bottom: 40px;
+  }
+
+  .cv-header h1 {
+    font-size: 2.4rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+
+  .cv-header .title {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--green);
+    margin-bottom: 16px;
+  }
+
+  .cv-contacts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  .cv-contacts a { color: var(--muted); }
+  .cv-contacts a:hover { color: var(--green); }
+
+  .cv-contacts span::before { content: '· '; }
+  .cv-contacts span:first-child::before { content: none; }
+
+  /* ── SECTIONS ── */
+  .cv-section {
+    margin-bottom: 44px;
+  }
+
+  .cv-section-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--green);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    border-bottom: 1px solid var(--green-dim);
+    padding-bottom: 6px;
+    margin-bottom: 24px;
+  }
+
+  /* ── SUMMARY ── */
+  .summary-bullets {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 0;
+  }
+
+  .summary-bullets li {
+    padding-left: 20px;
+    position: relative;
+    margin-bottom: 8px;
+    color: var(--text);
+    font-size: 15px;
+  }
+
+  .summary-bullets li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--green-dim);
+    font-size: 11px;
+    top: 3px;
+  }
+
+  /* ── EXPERIENCE ── */
+  .job {
+    margin-bottom: 36px;
+    padding-bottom: 36px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .job:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .job-meta {
+    margin-bottom: 12px;
+  }
+
+  .job-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 2px;
+  }
+
+  .job-header h3 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .job-dates {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--amber);
+    white-space: nowrap;
+  }
+
+  .job-company {
+    font-size: 13px;
+    color: var(--green);
+  }
+
+  .job-body {
+    font-size: 14px;
+  }
+
+  .job-body ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .job-body ul li {
+    padding-left: 20px;
+    position: relative;
+    margin-bottom: 6px;
+    color: var(--text);
+  }
+
+  .job-body ul li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--green-dim);
+    font-size: 11px;
+    top: 3px;
+  }
+
+  /* ── SKILLS ── */
+  .skills-list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 8px 24px;
+  }
+
+  .skills-list li {
+    padding-left: 20px;
+    position: relative;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  .skills-list li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--green-dim);
+    font-size: 11px;
+    top: 3px;
+  }
+
+  /* ── EDUCATION ── */
+  .edu-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .edu-item h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .edu-item p {
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border);
+    margin-top: 56px;
+    padding: 20px 0;
+    font-size: 12px;
+    color: var(--muted);
+    font-family: var(--mono);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  footer a { color: var(--muted); }
+  footer a:hover { color: var(--green); }
+
+  /* ── PRINT ── */
+  @media print {
+    body::before { display: none; }
+    body { background: #fff; color: #111; font-size: 12px; }
+    :root {
+      --bg: #fff; --surface: #f5f5f5; --border: #ddd;
+      --green: #006622; --green-dim: #006622; --amber: #8a5700;
+      --text: #111; --muted: #555;
+    }
+    nav, footer { display: none; }
+    .wrap { padding: 0; max-width: 100%; }
+    .job { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="index.html" class="nav-home">johnlonergan.github.io</a>
+    <div class="nav-links">
+      <a href="mailto:john.lonergan@gmail.com">john.lonergan@gmail.com</a>
+      <a href="https://www.linkedin.com/in/johnjlonergan" target="_blank">LinkedIn</a>
+      <a href="https://github.com/Johnlon" target="_blank">GitHub</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <div class="cv-header">
+    <h1>John Lonergan</h1>
+    <div class="title">// Technical Architect / Programmer</div>
+    <div class="cv-contacts">
+      <span>London, UK</span>
+      <span><a href="mailto:john.lonergan@gmail.com">john.lonergan@gmail.com</a></span>
+      <span><a href="https://www.linkedin.com/in/johnjlonergan" target="_blank">linkedin.com/in/johnjlonergan</a></span>
+      <span><a href="https://github.com/Johnlon" target="_blank">github.com/Johnlon</a></span>
+    </div>
+  </div>
+
+  <!-- PROFILE -->
+  <div class="cv-section">
+    <div class="cv-section-label">Profile</div>
+    <ul class="summary-bullets">
+      <li>Lead programmer and architect with a track record of building reliable, extensible and secure distributed systems</li>
+      <li>Over 10 years experience of applying agile methods, automation and test driven development to software and infrastructure engineering problems</li>
+      <li>Innovator and leader by example</li>
+    </ul>
+  </div>
+
+  <!-- TECHNOLOGY SUMMARY -->
+  <div class="cv-section">
+    <div class="cv-section-label">Technology Summary</div>
+    <ul class="skills-list">
+      <li>Scala / Java / Python / C++ / C#</li>
+      <li>Continuous Integration &amp; Deployment</li>
+      <li>Web infrastructure including load balancer design and web application firewalls</li>
+      <li>Cucumber / JUnit / Scalatest / Scalacheck</li>
+      <li>Kafka, JMS</li>
+      <li>Application security</li>
+      <li>Unix systems programming, low level networking</li>
+      <li>Relational and NoSQL databases</li>
+    </ul>
+  </div>
+
+  <!-- EXPERIENCE -->
+  <div class="cv-section">
+    <div class="cv-section-label">Experience</div>
+
+    <div class="job">
+      <div class="job-meta">
+        <div class="job-header">
+          <h3>Technical Architect</h3>
+          <span class="job-dates">2018 – present</span>
+        </div>
+        <div class="job-company">JP Morgan · Global Markets Technology · London</div>
+      </div>
+      <div class="job-body">
+        <ul>
+          <li>Technical architecture and platform engineering across global markets technology</li>
+          <li>Driving engineering standards, delivery practices and cross-team design governance</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="job-meta">
+        <div class="job-header">
+          <h3>Technical Architect &amp; Developer</h3>
+          <span class="job-dates">2011 – 2018</span>
+        </div>
+        <div class="job-company">Bank of America Merrill Lynch · Director, Global Markets Securities Technology · London</div>
+      </div>
+      <div class="job-body">
+        <ul>
+          <li>Transformed the development culture from one of manual testing and slow release cycles to one where the organisation embraced the merits of short iterations and sustainable development via automated testing, continuous integration and frequent releases</li>
+          <li>Introduced automated acceptance testing and Specification by Example using Cucumber</li>
+          <li>Introduced the Scala programming language to the global markets securities back office organisation; this is now the strategic programming language</li>
+          <li>Developing junior talent by coaching and pair programming</li>
+          <li>Developed a real time inventory management system using the principles of event sourcing and CQRS</li>
+          <li>Designed and implemented a scheme for generating high quality technical tutorial documentation from executable demonstration code by using a form of inverse literate programming</li>
+          <li>Built a reverse proxy infrastructure to facilitate the rapid deployment of secure web applications</li>
+          <li>Led the standardisation of server provisioning and security infrastructure resulting in massive reductions in effort and lead times</li>
+          <li>R&amp;D and evangelisation to drive the adoption of platform as a service within the global markets organisation and the bank</li>
+          <li>Evangelising the need for the bank to make better use of securities data by building a data platform that will support analytics and machine learning as well as typical reporting functions</li>
+          <li>Lead the core team that evolved these frameworks and infrastructure into platforms used across the strategic program</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="job-meta">
+        <div class="job-header">
+          <h3>Technical Lead</h3>
+          <span class="job-dates">1994 – 2011</span>
+        </div>
+        <div class="job-company">UBS Investment Bank · Director, Advisory Technology · London</div>
+      </div>
+      <div class="job-body">
+        <ul>
+          <li>Technical lead for the bank's strategic CRM and Research systems based on a mix of technologies including Java / C# / C / C++ / Microsoft / Various SQL / Javascript / GWT</li>
+          <li>Was one of the leaders introducing agile methods, including Scrum, to the department</li>
+          <li>Introduced automated testing for these systems</li>
+          <li>Built and maintained a web application firewall infrastructure that protected externally facing bank systems from intrusion</li>
+          <li>Migrated the bank's CRM systems from a vendor product to a more flexible and fit-for-purpose proprietary solution</li>
+          <li>Built .Net and web UIs and interfaces to the CRM and equity research systems facilitating open access</li>
+          <li>Worked on a plethora of systems and technologies from various web technologies to telephony integration, to network programming, managing the load balancer infrastructure, research interest and matching systems as well as re-architecting and rewriting the strategic analytics integration from Microsoft Office tools into the bank's equity research systems — resulting in more than an order of magnitude improvement in performance</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="job-meta">
+        <div class="job-header">
+          <h3>Software &amp; Systems Engineer</h3>
+          <span class="job-dates">1986 – 1994</span>
+        </div>
+        <div class="job-company">Prior experience at several companies</div>
+      </div>
+      <div class="job-body">
+        <ul>
+          <li>Hardware engineering</li>
+          <li>Unix device driver implementations for integration with machinery</li>
+          <li>Concurrent software design for robotic systems</li>
+          <li>Real time sampling and control systems</li>
+          <li>Sybase DBA and consultancy</li>
+          <li>Embedded systems and assembler</li>
+          <li>Low level network programming including UDP/SNMP</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- EDUCATION -->
+  <div class="cv-section">
+    <div class="cv-section-label">Education</div>
+    <div class="edu-item">
+      <div>
+        <h3>B.Eng Engineering Science</h3>
+        <p>University of Liverpool</p>
+      </div>
+      <span class="job-dates">1983 – 1986</span>
+    </div>
+  </div>
+
+</div><!-- /.wrap -->
+
+<div class="wrap">
+  <footer>
+    <span>John Lonergan · London, UK</span>
+    <span><a href="index.html">← portfolio</a> &nbsp;·&nbsp; <a href="mailto:john.lonergan@gmail.com">john.lonergan@gmail.com</a></span>
+  </footer>
+</div>
+
+</body>
+</html>
