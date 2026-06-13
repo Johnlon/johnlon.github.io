@@ -4,6 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{{ page.title }} — John Lonergan</title>
+<meta name="description" content="{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}">
+<meta property="og:title" content="{{ page.title }} — John Lonergan">
+<meta property="og:description" content="{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}">
+<meta property="og:image" content="https://johnlonergan.github.io/assets/gracie-telescope.jpg">
+<meta property="og:url" content="https://johnlonergan.github.io{{ page.url }}">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
@@ -201,11 +208,29 @@
     margin-top: 56px;
     padding-top: 24px;
     border-top: 1px solid var(--border);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 12px;
+  }
+
+  .post-footer .prev { text-align: left; }
+  .post-footer .next { text-align: right; }
+
+  .post-footer a {
+    display: block;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .post-footer a:hover { color: var(--green); text-decoration: none; }
+
+  .post-footer .nav-label {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 4px;
   }
 
   footer {
@@ -252,8 +277,20 @@
       {{ content }}
     </div>
     <div class="post-footer">
-      <a href="/blog/">← back to blog</a>
-      <a href="{{ page.blogger_url }}" target="_blank" rel="noopener" style="font-family:var(--mono);font-size:12px;color:var(--muted)">view original on blogger →</a>
+      <div class="prev">
+        {% if page.next %}
+        <div class="nav-label">← older</div>
+        <a href="{{ page.next.url }}">{{ page.next.title }}</a>
+        {% else %}
+        <a href="/blog/">← all posts</a>
+        {% endif %}
+      </div>
+      <div class="next">
+        {% if page.previous %}
+        <div class="nav-label">newer →</div>
+        <a href="{{ page.previous.url }}">{{ page.previous.title }}</a>
+        {% endif %}
+      </div>
     </div>
   </article>
 </div>

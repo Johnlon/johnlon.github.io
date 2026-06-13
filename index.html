@@ -1,9 +1,19 @@
+---
+layout: null
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>John Lonergan</title>
+<meta name="description" content="Software engineer, hardware hacker, and builder of things. Based in London.">
+<meta property="og:title" content="John Lonergan">
+<meta property="og:description" content="Software engineer, hardware hacker, and builder of things. Based in London.">
+<meta property="og:image" content="https://johnlonergan.github.io/assets/gracie-telescope.jpg">
+<meta property="og:url" content="https://johnlonergan.github.io/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -841,8 +851,15 @@
   <!-- ── BLOG ── -->
   <section>
     <div class="section-label">From the Blog</div>
-    <div class="blog-posts" id="blog-posts">
-      <div class="blog-loading">loading posts…</div>
+    <div class="blog-posts">
+      {% for post in site.posts limit:6 %}
+      <a class="blog-card" href="{{ post.url }}">
+        <span class="blog-card-date">{{ post.date | date: "%d %b %Y" }}</span>
+        <span class="blog-card-title">{{ post.title }}</span>
+        <span class="blog-card-excerpt">{{ post.excerpt | strip_html | truncate: 160 }}</span>
+        <span class="blog-card-more">read more →</span>
+      </a>
+      {% endfor %}
     </div>
   </section>
 
@@ -892,59 +909,6 @@
       imgs[i].classList.add('active');
     }, 3500);
   });
-</script>
-<script>
-  function renderBlogPosts(data) {
-    var container = document.getElementById('blog-posts');
-    var entries = (data.feed && data.feed.entry) || [];
-    if (!entries.length) { container.innerHTML = '<p class="blog-loading">No posts found.</p>'; return; }
-
-    function stripHtml(html) {
-      var tmp = document.createElement('div');
-      tmp.innerHTML = html;
-      return tmp.textContent || tmp.innerText || '';
-    }
-    function formatDate(iso) {
-      var d = new Date(iso);
-      return d.toLocaleDateString('en-GB', { year: 'numeric', month: 'short', day: 'numeric' });
-    }
-    function getLink(entry) {
-      var links = entry.link || [];
-      for (var i = 0; i < links.length; i++) {
-        if (links[i].rel === 'alternate') return links[i].href;
-      }
-      return '#';
-    }
-
-    container.innerHTML = '';
-    entries.forEach(function (entry) {
-      var title = (entry.title && entry.title.$t) || 'Untitled';
-      var date = (entry.published && entry.published.$t) ? formatDate(entry.published.$t) : '';
-      var raw = (entry.content && entry.content.$t) || (entry.summary && entry.summary.$t) || '';
-      var excerpt = stripHtml(raw).trim().slice(0, 160).replace(/\s+\S*$/, '') + '…';
-      var href = getLink(entry);
-      var card = document.createElement('a');
-      card.className = 'blog-card';
-      card.href = href;
-      card.target = '_blank';
-      card.rel = 'noopener';
-      card.innerHTML =
-        '<span class="blog-card-date">' + date + '</span>' +
-        '<span class="blog-card-title">' + title + '</span>' +
-        '<span class="blog-card-excerpt">' + excerpt + '</span>' +
-        '<span class="blog-card-more">read more →</span>';
-      container.appendChild(card);
-    });
-  }
-
-  (function () {
-    var s = document.createElement('script');
-    s.src = 'https://johnlonergan.blogspot.com/feeds/posts/default?alt=json-in-script&max-results=6&callback=renderBlogPosts';
-    s.onerror = function () {
-      document.getElementById('blog-posts').innerHTML = '<p class="blog-loading">Could not load posts.</p>';
-    };
-    document.head.appendChild(s);
-  })();
 </script>
 </body>
 </html>
