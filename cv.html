@@ -4,6 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>John Lonergan — CV</title>
+<meta name="description" content="CV of John Lonergan — Executive Director & Senior Principal Software Engineer, JP Morgan.">
+<meta property="og:title" content="John Lonergan — CV">
+<meta property="og:description" content="Executive Director & Senior Principal Software Engineer. 30+ years building distributed systems, leading engineering teams, and contributing to open source.">
+<meta property="og:image" content="https://johnlon.github.io/assets/gracie-telescope.jpg">
+<meta property="og:url" content="https://johnlon.github.io/cv.html">
+<meta property="og:type" content="profile">
+<meta name="twitter:card" content="summary">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -28,7 +35,7 @@
     background: var(--bg);
     color: var(--text);
     font-family: var(--sans);
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 500;
     line-height: 1.6;
     min-height: 100vh;
@@ -38,13 +45,7 @@
     content: '';
     position: fixed;
     inset: 0;
-    background: repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 2px,
-      rgba(0,0,0,0.07) 2px,
-      rgba(0,0,0,0.07) 4px
-    );
+    background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.07) 2px, rgba(0,0,0,0.07) 4px);
     pointer-events: none;
     z-index: 999;
   }
@@ -52,11 +53,7 @@
   a { color: var(--green); text-decoration: none; }
   a:hover { text-decoration: underline; }
 
-  .wrap {
-    max-width: 860px;
-    margin: 0 auto;
-    padding: 0 24px;
-  }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 0 24px; }
 
   /* ── NAV ── */
   nav {
@@ -65,32 +62,34 @@
     margin-bottom: 48px;
   }
 
-  nav .wrap {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
+  nav .wrap { display: flex; align-items: center; justify-content: space-between; }
 
   .nav-home {
     font-family: var(--mono);
-    font-size: 13px;
+    font-size: 14px;
     color: var(--green);
-    display: flex;
-    align-items: center;
-    gap: 6px;
+    font-weight: 600;
   }
 
-  .nav-home::before { content: '←'; }
+  .nav-links { display: flex; gap: 20px; font-size: 13px; align-items: center; }
+  .nav-links a { color: var(--text); font-weight: 600; }
+  .nav-links a:hover { color: var(--green); text-decoration: none; }
 
-  .nav-links {
-    display: flex;
-    gap: 20px;
-    font-size: 13px;
-    color: var(--muted);
+  /* ── DOWNLOAD BUTTON ── */
+  .btn-download {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--bg) !important;
+    background: var(--green);
+    border: none;
+    padding: 6px 14px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-decoration: none !important;
   }
-
-  .nav-links a { color: var(--muted); }
-  .nav-links a:hover { color: var(--text); }
+  .btn-download:hover { opacity: 0.85; }
 
   /* ── CV HEADER ── */
   .cv-header {
@@ -100,7 +99,7 @@
   }
 
   .cv-header h1 {
-    font-size: 2.4rem;
+    font-size: 2.1rem;
     font-weight: 700;
     letter-spacing: -0.5px;
     color: var(--text);
@@ -124,14 +123,11 @@
 
   .cv-contacts a { color: var(--muted); }
   .cv-contacts a:hover { color: var(--green); }
-
   .cv-contacts span::before { content: '· '; }
   .cv-contacts span:first-child::before { content: none; }
 
   /* ── SECTIONS ── */
-  .cv-section {
-    margin-bottom: 44px;
-  }
+  .cv-section { margin-bottom: 44px; }
 
   .cv-section-label {
     font-family: var(--mono);
@@ -144,19 +140,15 @@
     margin-bottom: 24px;
   }
 
-  /* ── SUMMARY ── */
-  .summary-bullets {
-    list-style: none;
-    padding: 0;
-    margin-bottom: 0;
-  }
+  /* ── PROFILE ── */
+  .summary-bullets { list-style: none; padding: 0; }
 
   .summary-bullets li {
     padding-left: 20px;
     position: relative;
     margin-bottom: 8px;
     color: var(--text);
-    font-size: 15px;
+    font-size: 14px;
   }
 
   .summary-bullets li::before {
@@ -175,15 +167,7 @@
     border-bottom: 1px solid var(--border);
   }
 
-  .job:last-child {
-    border-bottom: none;
-    margin-bottom: 0;
-    padding-bottom: 0;
-  }
-
-  .job-meta {
-    margin-bottom: 12px;
-  }
+  .job:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
 
   .job-header {
     display: flex;
@@ -194,11 +178,7 @@
     margin-bottom: 2px;
   }
 
-  .job-header h3 {
-    font-size: 1.05rem;
-    font-weight: 600;
-    color: var(--text);
-  }
+  .job-header h3 { font-size: 1.05rem; font-weight: 700; color: var(--text); }
 
   .job-dates {
     font-family: var(--mono);
@@ -207,26 +187,16 @@
     white-space: nowrap;
   }
 
-  .job-company {
-    font-size: 13px;
-    color: var(--green);
-  }
+  .job-company { font-size: 13px; color: var(--green); margin-bottom: 12px; }
 
-  .job-body {
-    font-size: 14px;
-  }
-
-  .job-body ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
+  .job-body ul { list-style: none; padding: 0; }
 
   .job-body ul li {
     padding-left: 20px;
     position: relative;
     margin-bottom: 6px;
     color: var(--text);
+    font-size: 13px;
   }
 
   .job-body ul li::before {
@@ -250,7 +220,7 @@
   .skills-list li {
     padding-left: 20px;
     position: relative;
-    font-size: 14px;
+    font-size: 13px;
     color: var(--text);
   }
 
@@ -263,6 +233,28 @@
     top: 3px;
   }
 
+  /* ── OPEN SOURCE ── */
+  .oss-list { list-style: none; padding: 0; }
+
+  .oss-list li {
+    padding-left: 20px;
+    position: relative;
+    margin-bottom: 10px;
+    font-size: 13px;
+    color: var(--text);
+  }
+
+  .oss-list li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--green-dim);
+    font-size: 11px;
+    top: 3px;
+  }
+
+  .oss-list strong { color: var(--green); }
+
   /* ── EDUCATION ── */
   .edu-item {
     display: flex;
@@ -272,17 +264,8 @@
     flex-wrap: wrap;
   }
 
-  .edu-item h3 {
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--text);
-  }
-
-  .edu-item p {
-    font-size: 13px;
-    color: var(--muted);
-    margin-top: 2px;
-  }
+  .edu-item h3 { font-size: 1rem; font-weight: 600; color: var(--text); }
+  .edu-item p { font-size: 13px; color: var(--muted); margin-top: 2px; }
 
   /* ── FOOTER ── */
   footer {
@@ -302,18 +285,89 @@
   footer a { color: var(--muted); }
   footer a:hover { color: var(--green); }
 
-  /* ── PRINT ── */
+  /* ════════════════════════════════════════════
+     PRINT / PDF
+     ════════════════════════════════════════════ */
   @media print {
+    * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
     body::before { display: none; }
-    body { background: #fff; color: #111; font-size: 12px; }
-    :root {
-      --bg: #fff; --surface: #f5f5f5; --border: #ddd;
-      --green: #006622; --green-dim: #006622; --amber: #8a5700;
-      --text: #111; --muted: #555;
+
+    body {
+      background: #fff !important;
+      color: #1a1a1a !important;
+      font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+      font-size: 11px;
+      line-height: 1.55;
     }
-    nav, footer { display: none; }
+
+    :root {
+      --bg: #fff;
+      --surface: #f6f6f6;
+      --border: #e0e0e0;
+      --green: #1a6b3a;
+      --green-dim: #1a6b3a;
+      --amber: #7a4e00;
+      --text: #1a1a1a;
+      --muted: #555;
+    }
+
+    nav, footer, .btn-download { display: none !important; }
+
     .wrap { padding: 0; max-width: 100%; }
-    .job { page-break-inside: avoid; }
+
+    /* PDF header */
+    .cv-header { padding-bottom: 18px; margin-bottom: 24px; border-bottom: 2px solid #1a6b3a; }
+    .cv-header h1 { font-size: 26px; color: #1a1a1a; letter-spacing: -0.5px; }
+    .cv-header .title { font-size: 11px; color: #1a6b3a; margin-bottom: 10px; font-family: 'Courier New', monospace; }
+    .cv-contacts { gap: 0 20px; font-size: 10px; color: #555; }
+    .cv-contacts a { color: #555 !important; }
+
+    /* Sections */
+    .cv-section { margin-bottom: 22px; }
+    .cv-section-label {
+      font-size: 9px;
+      color: #1a6b3a;
+      letter-spacing: 0.15em;
+      border-bottom: 1px solid #1a6b3a;
+      padding-bottom: 3px;
+      margin-bottom: 12px;
+      font-family: 'Courier New', monospace;
+    }
+
+    /* Bullets */
+    .summary-bullets li,
+    .job-body ul li,
+    .skills-list li,
+    .oss-list li { color: #1a1a1a; font-size: 10.5px; margin-bottom: 4px; }
+
+    .summary-bullets li::before,
+    .job-body ul li::before,
+    .skills-list li::before,
+    .oss-list li::before { color: #1a6b3a; }
+
+    /* Page breaks */
+    .cv-section        { margin-bottom: 18px; }
+    .cv-section-label  { page-break-after: avoid; }
+    .job               { page-break-inside: avoid; margin-bottom: 18px; padding-bottom: 18px; border-bottom: 1px solid #e0e0e0; }
+    .job:last-child    { border-bottom: none; }
+    .job-header        { page-break-after: avoid; }
+    .job-body          { page-break-before: avoid; }
+    .edu-item          { page-break-inside: avoid; }
+    .summary-bullets   { page-break-inside: avoid; }
+
+    /* Jobs */
+    .job-header h3 { font-size: 12px; color: #1a1a1a; }
+    .job-dates { font-size: 10px; color: #7a4e00; font-family: 'Courier New', monospace; }
+    .job-company { font-size: 10.5px; color: #1a6b3a; margin-bottom: 8px; }
+
+    .skills-list { grid-template-columns: repeat(2, 1fr); gap: 4px 20px; }
+    .oss-list strong { color: #1a6b3a; }
+
+    .edu-item h3 { font-size: 11px; }
+    .edu-item p { font-size: 10px; color: #555; }
+
+    @page { margin: 16mm 16mm 16mm 16mm; size: A4; }
   }
 </style>
 </head>
@@ -321,25 +375,28 @@
 
 <nav>
   <div class="wrap">
-    <a href="index.html" class="nav-home">johnlonergan.github.io</a>
+    <a href="/" class="nav-home">John Lonergan</a>
     <div class="nav-links">
-      <a href="mailto:john.lonergan@gmail.com">john.lonergan@gmail.com</a>
-      <a href="https://www.linkedin.com/in/johnjlonergan" target="_blank">LinkedIn</a>
-      <a href="https://github.com/Johnlon" target="_blank">GitHub</a>
+      <a href="/">Home</a>
+      <a href="/#bio">Bio</a>
+      <a href="/blog/">Blog</a>
+      <a href="/#projects">Projects</a>
+      <a class="btn-download" href="/assets/john-lonergan-cv.pdf" download="john-lonergan-cv.pdf">Download CV</a>
     </div>
   </div>
 </nav>
 
-<div class="wrap">
+<div class="wrap" id="cv-main">
 
   <div class="cv-header">
     <h1>John Lonergan</h1>
-    <div class="title">// Technical Architect / Programmer</div>
+    <div class="title">// Executive Director · Senior Principal Software Engineer</div>
     <div class="cv-contacts">
       <span>London, UK</span>
       <span><a href="mailto:john.lonergan@gmail.com">john.lonergan@gmail.com</a></span>
       <span><a href="https://www.linkedin.com/in/johnjlonergan" target="_blank">linkedin.com/in/johnjlonergan</a></span>
       <span><a href="https://github.com/Johnlon" target="_blank">github.com/Johnlon</a></span>
+      <span><a href="https://johnlon.github.io" target="_blank">johnlon.github.io</a></span>
     </div>
   </div>
 
@@ -347,29 +404,13 @@
   <div class="cv-section">
     <div class="cv-section-label">Profile</div>
     <ul class="summary-bullets">
-      <li>Lead programmer and architect with a track record of building reliable, extensible and secure distributed systems</li>
-      <li>Over 20 years of progressive development in applying agile methods, automation and test driven development to software and infrastructure engineering problems</li>
-      <li>Innovator and leader by example</li>
-      <li>Passionate about inclusive, open cultures where everyone has a voice and the best ideas win</li>
-      <li>Strong opinions, loosely held</li>
-      <li>Very hands-on — only happy in the code, and knows what I like</li>
-    </ul>
-  </div>
-
-  <!-- TECHNOLOGY SUMMARY -->
-  <div class="cv-section">
-    <div class="cv-section-label">Technology Summary</div>
-    <ul class="skills-list">
-      <li>Scala / Java / Go / Python / C++ / C#</li>
-      <li>Continuous Integration &amp; Deployment</li>
-      <li>Web infrastructure including load balancer design and web application firewalls</li>
-      <li>Cucumber / JUnit / Scalatest / Scalacheck</li>
-      <li>Contributor to multiple BDD frameworks including Cucumber, Godog and Behave</li>
-      <li>Kafka, JMS</li>
-      <li>Application security</li>
-      <li>Unix systems programming, low level networking</li>
-      <li>Relational and NoSQL databases</li>
-      <li>Distributed systems design and architecture</li>
+      <li>Executive Director and Senior Principal Software Engineer with 30+ years building distributed systems across defence, finance, and cloud infrastructure</li>
+      <li>Engineering lead and technical architect — deeply hands-on, only happy in the code, and clear about what good looks like</li>
+      <li>Track record of raising engineering standards across organisations: introducing CI/CD, automated testing, and modern development practices to teams that didn't have them</li>
+      <li>Develops engineers through code reviews, pairing, architecture sessions, and giving teams the space to grow whilst holding them accountable</li>
+      <li>Strong advocate for inclusive, open cultures where the best ideas win regardless of where they come from</li>
+      <li>Strong opinions, loosely held — collaborative to the core, actively seeks out people with complementary skills</li>
+      <li>Contributor to open source tools used across the industry</li>
     </ul>
   </div>
 
@@ -378,93 +419,111 @@
     <div class="cv-section-label">Experience</div>
 
     <div class="job">
-      <div class="job-meta">
-        <div class="job-header">
-          <h3>Executive Director &amp; Senior Principal Software Engineer</h3>
-          <span class="job-dates">2018 – present</span>
-        </div>
-        <div class="job-company">JP Morgan · Cloud Services · London</div>
+      <div class="job-header">
+        <h3>Executive Director &amp; Senior Principal Software Engineer</h3>
+        <span class="job-dates">2018 – present</span>
       </div>
+      <div class="job-company">JP Morgan · Cloud Services · London</div>
       <div class="job-body">
         <ul>
-          <li>Engineering lead across a collection of feature teams in Cloud Services, adapting to the needs of the organisation and working across diverse problems</li>
-          <li>Driving engineering standards, delivery practices and cross-team design governance</li>
-          <li>Using available opportunities — code reviews, architecture discussions, pairing — to develop engineering practices and raise the standard of the craft across teams</li>
-          <li>Giving teams space to grow and make decisions whilst holding them accountable to doing the right thing</li>
-          <li>Strong advocate for collaboration — pair programming, stand-up sessions in front of whiteboards to work through problems and find the right solution together</li>
-          <li>Actively seeks out people with complementary skills and perspectives to get the best outcome — no ego about where the right answer comes from</li>
+          <li>Engineering lead across a collection of feature teams in Cloud Services, applied as a flexible senior resource where the organisation needs it most — adapting to diverse problems across the platform</li>
+          <li>Driving engineering standards, delivery practices, and cross-team design governance at senior principal level</li>
+          <li>Uses every available opportunity — code reviews, architecture discussions, pairing — to develop engineering practices and raise the standard of the craft across teams</li>
+          <li>Gives teams the space to make decisions and grow, whilst holding them accountable to doing the right thing</li>
+          <li>Strong advocate for collaboration: pair programming and standing in front of a whiteboard together to work through problems and find the best solution</li>
+          <li>Actively seeks out people with complementary skills and perspectives — no ego about where the right answer comes from</li>
+          <li>Very hands-on: leads from the code, not from a distance</li>
         </ul>
       </div>
     </div>
 
     <div class="job">
-      <div class="job-meta">
-        <div class="job-header">
-          <h3>Technical Architect &amp; Developer</h3>
-          <span class="job-dates">2011 – 2018</span>
-        </div>
-        <div class="job-company">Bank of America Merrill Lynch · Director, Global Markets Securities Technology · London</div>
+      <div class="job-header">
+        <h3>Director &amp; Technical Lead</h3>
+        <span class="job-dates">2011 – 2018</span>
       </div>
+      <div class="job-company">Bank of America Merrill Lynch · Global Markets Securities Technology · London</div>
       <div class="job-body">
         <ul>
           <li>Lead engineer on the BAML securities straight through processing system in the global securities middle office</li>
-          <li>Transformed the development culture from one of manual testing and slow release cycles to one where the organisation embraced the merits of short iterations and sustainable development via automated testing, continuous integration and frequent releases</li>
+          <li>Transformed the development culture from manual testing and slow release cycles to CI/CD and automated testing — short iterations, sustainable pace, frequent releases</li>
           <li>Introduced automated acceptance testing and Specification by Example using Cucumber</li>
-          <li>Introduced the Scala programming language to the global markets securities back office organisation; this is now the strategic programming language</li>
-          <li>Developing junior talent by coaching and pair programming</li>
-          <li>Developed a real time inventory management system using the principles of event sourcing and CQRS</li>
-          <li>Designed and implemented a scheme for generating high quality technical tutorial documentation from executable demonstration code by using a form of inverse literate programming</li>
-          <li>Built a reverse proxy infrastructure to facilitate the rapid deployment of secure web applications</li>
-          <li>Led the standardisation of server provisioning and security infrastructure resulting in massive reductions in effort and lead times</li>
-          <li>R&amp;D and evangelisation to drive the adoption of platform as a service within the global markets organisation and the bank</li>
-          <li>Evangelising the need for the bank to make better use of securities data by building a data platform that will support analytics and machine learning as well as typical reporting functions</li>
-          <li>Lead the core team that evolved these frameworks and infrastructure into platforms used across the strategic program</li>
+          <li>Introduced Scala as the strategic programming language across global markets securities back office</li>
+          <li>Built a real-time inventory management system using event sourcing and CQRS</li>
+          <li>Designed a reverse proxy infrastructure for rapid, secure web application deployment</li>
+          <li>Led standardisation of server provisioning and security infrastructure, massively reducing effort and lead times</li>
+          <li>Built a data platform to support analytics and machine learning across securities data</li>
+          <li>Developed junior talent through coaching and pair programming</li>
         </ul>
       </div>
     </div>
 
     <div class="job">
-      <div class="job-meta">
-        <div class="job-header">
-          <h3>Technical Lead</h3>
-          <span class="job-dates">1994 – 2011</span>
-        </div>
-        <div class="job-company">UBS Investment Bank · Director, Advisory Technology · London</div>
+      <div class="job-header">
+        <h3>Director &amp; Technical Lead</h3>
+        <span class="job-dates">1994 – 2011</span>
       </div>
+      <div class="job-company">UBS Investment Bank · Advisory Technology · London</div>
       <div class="job-body">
         <ul>
-          <li>Technical lead for the bank's strategic CRM and Research systems based on a mix of technologies including Java / C# / C / C++ / Microsoft / Various SQL / Javascript / GWT</li>
-          <li>Was one of the leaders introducing agile methods, including Scrum, to the department</li>
-          <li>Introduced automated testing for these systems</li>
-          <li>Built and maintained a web application firewall infrastructure that protected externally facing bank systems from intrusion</li>
-          <li>Migrated the bank's CRM systems from a vendor product to a more flexible and fit-for-purpose proprietary solution</li>
-          <li>Built .Net and web UIs and interfaces to the CRM and equity research systems facilitating open access</li>
-          <li>Worked on a plethora of systems and technologies from various web technologies to telephony integration, to network programming, managing the load balancer infrastructure, research interest and matching systems as well as re-architecting and rewriting the strategic analytics integration from Microsoft Office tools into the bank's equity research systems — resulting in more than an order of magnitude improvement in performance</li>
+          <li>Technical lead for the bank's strategic CRM and Research systems across Java, C#, C++, SQL, and JavaScript</li>
+          <li>One of the leaders introducing agile methods including Scrum to the department</li>
+          <li>Introduced automated testing across the CRM and research platform</li>
+          <li>Built and maintained a web application firewall infrastructure protecting externally-facing bank systems</li>
+          <li>Migrated the bank's CRM from a vendor product to a fit-for-purpose proprietary solution</li>
+          <li>Re-architected analytics integration from Microsoft Office tools into equity research systems — over an order of magnitude performance improvement</li>
+          <li>Worked across telephony integration, network programming, load balancer infrastructure, and research matching systems</li>
         </ul>
       </div>
     </div>
 
     <div class="job">
-      <div class="job-meta">
-        <div class="job-header">
-          <h3>Software &amp; Systems Engineer</h3>
-          <span class="job-dates">1986 – 1994</span>
-        </div>
-        <div class="job-company">Prior experience at several companies</div>
+      <div class="job-header">
+        <h3>Software &amp; Systems Engineer</h3>
+        <span class="job-dates">1986 – 1994</span>
       </div>
+      <div class="job-company">Various — defence, industrial, and commercial</div>
       <div class="job-body">
         <ul>
-          <li>Hardware engineering</li>
-          <li>Unix device driver implementations for integration with machinery</li>
+          <li>Hardware engineering and embedded systems in defence electronics</li>
+          <li>Unix device driver development for integration with industrial machinery</li>
           <li>Concurrent software design for robotic systems</li>
-          <li>Real time sampling and control systems</li>
+          <li>Real-time sampling and control systems</li>
+          <li>Low-level network programming including UDP/SNMP</li>
           <li>Sybase DBA and consultancy</li>
-          <li>Embedded systems and assembler</li>
-          <li>Low level network programming including UDP/SNMP</li>
         </ul>
       </div>
     </div>
 
+  </div>
+
+  <!-- TECHNOLOGY -->
+  <div class="cv-section">
+    <div class="cv-section-label">Technology</div>
+    <ul class="skills-list">
+      <li>Scala · Java · Go · Python · C++ · C#</li>
+      <li>Distributed systems design and architecture</li>
+      <li>Continuous integration &amp; deployment pipelines</li>
+      <li>Kafka · JMS · event-driven architecture</li>
+      <li>Cucumber · JUnit · Scalatest · Scalacheck · Godog</li>
+      <li>Web application firewalls · load balancer design</li>
+      <li>Application security · reverse proxy infrastructure</li>
+      <li>Unix systems programming · low-level networking</li>
+      <li>Relational and NoSQL databases</li>
+      <li>Cloud infrastructure and platform engineering</li>
+    </ul>
+  </div>
+
+  <!-- OPEN SOURCE -->
+  <div class="cv-section">
+    <div class="cv-section-label">Open Source</div>
+    <ul class="oss-list">
+      <li><strong>Cucumber / Godog / Behave</strong> — contributor to multiple BDD frameworks across the Java, Go, and Python ecosystems</li>
+      <li><strong>Typesafe Config</strong> — contributed the "required includes" feature (PR #421), enabling mandatory configuration file enforcement</li>
+      <li><strong>ClasspathHell</strong> — authored a classpath collision detection tool for Java/Scala builds, preventing hard-to-diagnose runtime failures caused by duplicate classes</li>
+      <li><strong>slf4jtesting</strong> — authored a concurrent-safe SLF4J logging test utility for dependency-injection based logging verification</li>
+      <li><strong>SPAM-1</strong> — designed and built an 8-bit CPU from 7400-series TTL logic, documented on Hackaday; a deep-dive hardware project blending engineering and craft</li>
+    </ul>
   </div>
 
   <!-- EDUCATION -->
@@ -479,12 +538,12 @@
     </div>
   </div>
 
-</div><!-- /.wrap -->
+</div>
 
 <div class="wrap">
   <footer>
     <span>John Lonergan · London, UK</span>
-    <span><a href="index.html">← portfolio</a> &nbsp;·&nbsp; <a href="mailto:john.lonergan@gmail.com">john.lonergan@gmail.com</a></span>
+    <span><a href="/">← portfolio</a> &nbsp;·&nbsp; <a href="mailto:john.lonergan@gmail.com">john.lonergan@gmail.com</a></span>
   </footer>
 </div>
 
