@@ -1,0 +1,272 @@
+---
+layout: null
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog — John Lonergan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:        #0d0f0e;
+    --surface:   #131614;
+    --border:    #1e2420;
+    --green:     #39ff7a;
+    --green-dim: #1a7a3a;
+    --amber:     #ffb830;
+    --text:      #dde8de;
+    --muted:     #8a9e8c;
+    --mono:      'Share Tech Mono', monospace;
+    --sans:      'Inter', sans-serif;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.07) 2px, rgba(0,0,0,0.07) 4px);
+    pointer-events: none;
+    z-index: 999;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  a { color: var(--green); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+
+  nav {
+    border-bottom: 1px solid var(--border);
+    padding: 14px 0;
+    margin-bottom: 48px;
+  }
+
+  nav .wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-home {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--green);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 20px;
+    font-size: 13px;
+  }
+
+  .nav-links a { color: var(--muted); }
+  .nav-links a:hover { color: var(--text); }
+
+  /* ── HERO ── */
+  .blog-hero {
+    margin-bottom: 48px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    align-items: center;
+  }
+
+  @media (max-width: 600px) { .blog-hero { grid-template-columns: 1fr; } }
+
+  .blog-hero-text h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+    margin-bottom: 8px;
+  }
+
+  .blog-hero-text p {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .blog-hero-img {
+    aspect-ratio: 4/3;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--muted);
+    font-family: var(--mono);
+    font-size: 12px;
+  }
+
+  .blog-hero-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* ── POSTS ── */
+  .section-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--green);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .post-list { list-style: none; }
+
+  .post-item {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    gap: 0 20px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .post-item:last-child { border-bottom: none; }
+
+  .post-item-date {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+    padding-top: 2px;
+    letter-spacing: 0.06em;
+  }
+
+  .post-item-content h2 {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 4px;
+    line-height: 1.4;
+  }
+
+  .post-item-content h2 a { color: var(--text); }
+  .post-item-content h2 a:hover { color: var(--green); text-decoration: none; }
+
+  .post-item-content p {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  .post-tags {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-top: 6px;
+  }
+
+  .post-tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--muted);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 1px 6px;
+  }
+
+  footer {
+    border-top: 1px solid var(--border);
+    margin-top: 48px;
+    padding: 20px 0;
+    font-size: 12px;
+    color: var(--muted);
+    font-family: var(--mono);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  footer a { color: var(--muted); }
+  footer a:hover { color: var(--green); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="/" class="nav-home">← johnlonergan.github.io</a>
+    <div class="nav-links">
+      <a href="/cv.html">cv</a>
+      <a href="mailto:john.lonergan@gmail.com">email</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <div class="blog-hero">
+    <div class="blog-hero-text">
+      <h1>Writing</h1>
+      <p>Notes on software, hardware, and the things I've been building and thinking about. Ranging from Go patterns to Java gripes, CPU design to space tourism tips.</p>
+    </div>
+    <div class="blog-hero-img">
+      <!-- Drop Gracie's telescope photo here:
+           <img src="/assets/gracie-telescope.jpg" alt="Gracie looking through a telescope">
+           Upload the photo to /assets/ and uncomment the line above -->
+      <span>// photo coming soon</span>
+    </div>
+  </div>
+
+  <div class="section-label">All posts</div>
+
+  <ul class="post-list">
+    {% assign posts = site.posts %}
+    {% for post in posts %}
+    <li class="post-item">
+      <span class="post-item-date">{{ post.date | date: "%b %Y" }}</span>
+      <div class="post-item-content">
+        <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
+        {% if post.excerpt %}<p>{{ post.excerpt | strip_html | truncate: 160 }}</p>{% endif %}
+        {% if post.tags.size > 0 %}
+        <div class="post-tags">{% for tag in post.tags %}<span class="post-tag">{{ tag }}</span>{% endfor %}</div>
+        {% endif %}
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+
+</div>
+
+<div class="wrap">
+  <footer>
+    <span>John Lonergan · London, UK</span>
+    <span><a href="/">portfolio</a> · <a href="/cv.html">cv</a> · <a href="mailto:john.lonergan@gmail.com">john.lonergan@gmail.com</a></span>
+  </footer>
+</div>
+
+</body>
+</html>
